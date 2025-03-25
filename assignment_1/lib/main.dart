@@ -8,7 +8,6 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // Dette er hovedwidgeten som starter appen
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,7 +29,6 @@ class _TodoListScreenState extends State<TodoListScreen> {
   List<Task> tasks = [];
   final TextEditingController _controller = TextEditingController();
 
-  // Opprett (Create): Legger til en ny oppgave
   void _addTask(String title) {
     if (title.trim().isEmpty) return;
     setState(() {
@@ -39,7 +37,6 @@ class _TodoListScreenState extends State<TodoListScreen> {
     _controller.clear();
   }
 
-  // Rediger (Update): Åpner en dialog for å redigere en oppgave
   void _editTask(Task task) {
     final TextEditingController editController = TextEditingController(
       text: task.title,
@@ -75,7 +72,6 @@ class _TodoListScreenState extends State<TodoListScreen> {
     );
   }
 
-  // Slett (Delete): Fjerner en oppgave fra listen
   void _deleteTask(Task task) {
     setState(() {
       tasks.remove(task);
@@ -88,7 +84,6 @@ class _TodoListScreenState extends State<TodoListScreen> {
       appBar: AppBar(title: Text('To-Do Liste')),
       body: Column(
         children: [
-          // Inputfelt og knapp for å legge til nye oppgaver
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
@@ -108,7 +103,6 @@ class _TodoListScreenState extends State<TodoListScreen> {
               ],
             ),
           ),
-          // Viser listen over oppgaver
           Expanded(
             child: ListView.builder(
               itemCount: tasks.length,
